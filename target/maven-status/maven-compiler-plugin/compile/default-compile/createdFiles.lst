@@ -1,0 +1,6 @@
+collbackend\DAO\BlogDAO.class
+collbackend\config\Dbconfig.class
+collbackend\model\Forum.class
+collbackend\DAO\BlogDAOImpl.class
+collbackend\model\Blog.class
+collbackend\DAO\ForumDAO.class
