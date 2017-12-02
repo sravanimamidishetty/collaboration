@@ -19,12 +19,15 @@ import collbackend.DAO.BlogDAO;
 import collbackend.DAO.BlogDAOImpl;
 import collbackend.DAO.ForumDAO;
 import collbackend.DAO.ForumDAOImpl;
+import collbackend.DAO.FriendDAO;
+import collbackend.DAO.FriendDAOImpl;
 import collbackend.DAO.JobDAO;
 import collbackend.DAO.JobDAOImpl;
 import collbackend.DAO.UserDAO;
 import collbackend.DAO.UserDAOImpl;
 import collbackend.model.Blog;
 import collbackend.model.Forum;
+import collbackend.model.Friend;
 import collbackend.model.Job;
 import collbackend.model.User;
 
@@ -64,6 +67,7 @@ public class Dbconfig {
 		sessionBuilder.addAnnotatedClasses(Forum.class);
 		sessionBuilder.addAnnotatedClasses(User.class);
 		sessionBuilder.addAnnotatedClasses(Job.class);
+		sessionBuilder.addAnnotatedClasses(Friend.class);
 		sessionBuilder.scanPackages("com.backend");
 		System.out.println("Session is crated................!");
 
@@ -105,5 +109,12 @@ public class Dbconfig {
 	{
 		System.out.println("Job DAO object Created");
 		return new JobDAOImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="friendDAO")
+	public FriendDAO getFriendDAO(SessionFactory sessionFactory)
+	{
+		System.out.println("Friend DAO object Created");
+		return new FriendDAOImpl(sessionFactory);
 	}
 }

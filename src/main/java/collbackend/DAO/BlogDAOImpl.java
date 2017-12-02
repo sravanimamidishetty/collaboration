@@ -85,7 +85,6 @@ public class BlogDAOImpl implements BlogDAO {
 
 	@Transactional
 	public boolean approveBlog(Blog blog) {
-		{
 			try{
 				blog.setStatus("A");
 				sessionFactory.getCurrentSession().saveOrUpdate(blog);
@@ -97,7 +96,7 @@ public class BlogDAOImpl implements BlogDAO {
 				return false;
 				}	
 			}
-	}
+	
 @Transactional
 	public boolean rejectBlog(Blog blog) {
 		try{
