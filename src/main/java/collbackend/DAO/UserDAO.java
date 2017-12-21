@@ -19,5 +19,9 @@ public boolean addUser(User user);
 	public boolean approveUser(User user);
 	
 	public boolean rejectUser(User user);
+
+	public boolean checkLogin(User user);
+
+	public boolean updateOnlineStatus(String string, User user);
 	
 }

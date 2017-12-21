@@ -104,6 +104,16 @@ Session session=sessionFactory.openSession();
 			return false;
 			}	
 		
-	}	
+	}
+@Override
+public boolean checkLogin(User user) {
+	// TODO Auto-generated method stub
+	return false;
+}
+@Override
+public boolean updateOnlineStatus(String string, User user) {
+	// TODO Auto-generated method stub
+	return false;
+}	
 
 }

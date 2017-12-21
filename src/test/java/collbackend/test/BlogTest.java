@@ -9,11 +9,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-
 import collbackend.DAO.BlogDAO;
 import collbackend.config.Dbconfig;
 import collbackend.model.Blog;
-
 @ComponentScan("collbackend")
 public class BlogTest {
 static BlogDAO blogDAO;
@@ -21,6 +19,7 @@ static BlogDAO blogDAO;
 	@BeforeClass
 	public static void initialize()
 	{
+		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
 		context.register(Dbconfig.class);
 		context.scan("collbackend");
@@ -29,13 +28,13 @@ static BlogDAO blogDAO;
 		blogDAO=(BlogDAO)context.getBean("blogDAO");
 	}
 	
-	@Ignore
+	/*@Ignore*/
 	@Test
 	public void addBlogTest()
 	{
 		Blog blog=new Blog();
 		
-		blog.setBlogId(1003);
+		blog.setBlogId(1004);
 		blog.setBlogName("HTML");
 		blog.setBlogContent("Designed for web pages");
 		blog.setStatus("p");
@@ -52,8 +51,8 @@ static BlogDAO blogDAO;
 	{
 Blog blog=new Blog();
 		
-		blog.setBlogId(1);
-		blog.setBlogName("HTML");
+		blog.setBlogId(3);
+		blog.setBlogName("java script");
 		blog.setBlogContent(" web pages");
 		blog.setStatus("p");
 		blog.setLikes(6);
@@ -61,7 +60,6 @@ Blog blog=new Blog();
 		
 		assertTrue("Problem in Inserting Blog",blogDAO.addBlog(blog));
 	}
-	
 	@Ignore
 	@Test
 	public void getBlogTest(){
@@ -73,7 +71,7 @@ Blog blog=new Blog();
 		assertNotNull("blog not found", blog);
 	}
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void deleteBlogTest(){
 		Blog blog=(Blog)blogDAO.getBlog(1);

@@ -1,5 +1,6 @@
 package collbackend.config;
 
+
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -19,21 +20,18 @@ import collbackend.DAO.BlogDAO;
 import collbackend.DAO.BlogDAOImpl;
 import collbackend.DAO.ForumDAO;
 import collbackend.DAO.ForumDAOImpl;
-import collbackend.DAO.FriendDAO;
-import collbackend.DAO.FriendDAOImpl;
 import collbackend.DAO.JobDAO;
 import collbackend.DAO.JobDAOImpl;
 import collbackend.DAO.UserDAO;
 import collbackend.DAO.UserDAOImpl;
 import collbackend.model.Blog;
 import collbackend.model.Forum;
-import collbackend.model.Friend;
-import collbackend.model.Job;
-import collbackend.model.User;
+
+
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("collbackend")
+@ComponentScan("collbackend.*")
 @Component
 public class Dbconfig {
 
@@ -42,11 +40,12 @@ public class Dbconfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:XE");
-		dataSource.setUsername("sravani");
-		dataSource.setPassword("123456");
+		dataSource.setUsername("niit1");
+		dataSource.setPassword("niit1");
 
 		System.out.println("DataBase is connected.........!");
 		return dataSource;
+
 	}
 
 	public Properties getHibernateProperties() {
@@ -65,10 +64,7 @@ public class Dbconfig {
 	
 		sessionBuilder.addAnnotatedClasses(Blog.class);
 		sessionBuilder.addAnnotatedClasses(Forum.class);
-		sessionBuilder.addAnnotatedClasses(User.class);
-		sessionBuilder.addAnnotatedClasses(Job.class);
-		sessionBuilder.addAnnotatedClasses(Friend.class);
-		sessionBuilder.scanPackages("com.backend");
+		sessionBuilder.scanPackages("collbackend");
 		System.out.println("Session is crated................!");
 
 		return sessionBuilder.buildSessionFactory();
@@ -89,6 +85,7 @@ public class Dbconfig {
 		System.out.println("Blog DAO object Created");
 		return new BlogDAOImpl(sessionFactory);
 	}
+	
 	@Autowired
 	@Bean(name="forumDAO")
 	public ForumDAO getForumDAO(SessionFactory sessionFactory)
@@ -96,25 +93,21 @@ public class Dbconfig {
 		System.out.println("Forum DAO object Created");
 		return new ForumDAOImpl(sessionFactory);
 	}
+	
 	@Autowired
-	@Bean(name="userDAO")
+	@Bean(name = "userDAO")
 	public UserDAO getUserDAO(SessionFactory sessionFactory)
 	{
-		System.out.println("User DAO object Created");
+		System.out.println("User object Created");
 		return new UserDAOImpl(sessionFactory);
 	}
+	
 	@Autowired
-	@Bean(name="jobDAO")
+	@Bean(name = "jobDAO")
 	public JobDAO getJobDAO(SessionFactory sessionFactory)
 	{
-		System.out.println("Job DAO object Created");
+		System.out.println("Job object created");
 		return new JobDAOImpl(sessionFactory);
 	}
-	@Autowired
-	@Bean(name="friendDAO")
-	public FriendDAO getFriendDAO(SessionFactory sessionFactory)
-	{
-		System.out.println("Friend DAO object Created");
-		return new FriendDAOImpl(sessionFactory);
-	}
+	
 }

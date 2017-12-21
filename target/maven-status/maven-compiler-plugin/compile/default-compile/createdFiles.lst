@@ -1,8 +1,9 @@
 collbackend\DAO\BlogDAO.class
 collbackend\DAO\JobDAOImpl.class
-collbackend\config\WebResolver.class
 collbackend\model\Forum.class
+collbackend\controller\JobController.class
 collbackend\DAO\ForumDAOImpl.class
+collbackend\controller\FriendController.class
 collbackend\DAO\FriendDAO.class
 collbackend\controller\BlogController.class
 collbackend\DAO\JobDAO.class
@@ -11,9 +12,12 @@ collbackend\model\Blog.class
 collbackend\DAO\ForumDAO.class
 collbackend\model\Job.class
 collbackend\DAO\UserDAOImpl.class
+collbackend\restconfig\WebResolver.class
 collbackend\DAO\BlogDAOImpl.class
-collbackend\config\WebInitializer.class
 collbackend\DAO\FriendDAOImpl.class
 collbackend\DAO\UserDAO.class
+collbackend\restconfig\WebInitializer.class
 collbackend\config\Dbconfig.class
+collbackend\controller\ForumController.class
+collbackend\controller\UserController.class
 collbackend\model\User.class
